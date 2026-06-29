@@ -24,6 +24,8 @@ if [ "$1" == "project" ]; then
     
     # Crear carpeta .github si no existe para Copilot
     mkdir -p .github
+    # Crear carpeta .codex si no existe para Codex
+    mkdir -p .codex
     
     # URL base para descargas en crudo si se ejecuta via curl
     REPO_RAW_URL="https://raw.githubusercontent.com/bywarmx/bywZero/main"
@@ -35,6 +37,7 @@ if [ "$1" == "project" ]; then
         cp .codexrules ./
         cp AGENTS.md ./
         cp .github/copilot-instructions.md .github/
+        cp .codex/config.toml .codex/
     else
         echo -e "[*] Descargando reglas desde el repositorio de GitHub..."
         curl -fsSL "${REPO_RAW_URL}/.cursorrules" -o .cursorrules || wget -qO .cursorrules "${REPO_RAW_URL}/.cursorrules"
@@ -42,6 +45,7 @@ if [ "$1" == "project" ]; then
         curl -fsSL "${REPO_RAW_URL}/.codexrules" -o .codexrules || wget -qO .codexrules "${REPO_RAW_URL}/.codexrules"
         curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o AGENTS.md || wget -qO AGENTS.md "${REPO_RAW_URL}/AGENTS.md"
         curl -fsSL "${REPO_RAW_URL}/.github/copilot-instructions.md" -o .github/copilot-instructions.md || wget -qO .github/copilot-instructions.md "${REPO_RAW_URL}/.github/copilot-instructions.md"
+        curl -fsSL "${REPO_RAW_URL}/.codex/config.toml" -o .codex/config.toml || wget -qO .codex/config.toml "${REPO_RAW_URL}/.codex/config.toml"
     fi
     
     echo -e "${GREEN}[+] Configuración de Proyecto completada con éxito para Cursor, Windsurf, Codex y Copilot.${NC}"
@@ -93,6 +97,25 @@ else
         # Descargar regla global universal para Codex
         curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${GLOBAL_AGENTS_DIR}/AGENTS.md"
         curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${CODEX_CONFIG_DIR}/AGENTS.md"
+    fi
+    
+    # Configurar ~/.codex/config.toml globalmente para autonomía total
+    CODEX_CONFIG_FILE="${CODEX_CONFIG_DIR}/config.toml"
+    if [ ! -f "$CODEX_CONFIG_FILE" ]; then
+        echo -e "[*] Creando nuevo config.toml para Codex..."
+        echo -e "approval_policy = \"never\"\nsandbox_mode = \"danger-full-access\"\nmodel_instructions_file = \"$HOME/.codex/AGENTS.md\"\n" > "$CODEX_CONFIG_FILE"
+    else
+        echo -e "[*] Actualizando config.toml de Codex con autonomía total..."
+        # Eliminar claves anteriores si existen para evitar duplicados
+        sed -i '/approval_policy/d' "$CODEX_CONFIG_FILE"
+        sed -i '/sandbox_mode/d' "$CODEX_CONFIG_FILE"
+        sed -i '/model_instructions_file/d' "$CODEX_CONFIG_FILE"
+        
+        # Prepend las opciones al archivo
+        TEMP_CONF=$(mktemp)
+        echo -e "approval_policy = \"never\"\nsandbox_mode = \"danger-full-access\"\nmodel_instructions_file = \"$HOME/.codex/AGENTS.md\"\n" > "$TEMP_CONF"
+        cat "$CODEX_CONFIG_FILE" >> "$TEMP_CONF"
+        mv "$TEMP_CONF" "$CODEX_CONFIG_FILE"
     fi
     
     echo -e "${GREEN}[+] Plugin de agy (Google Antigravity), reglas globales de Codex (~/.agents/AGENTS.md) e IAs instaladas globalmente.${NC}"
