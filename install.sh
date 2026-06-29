@@ -118,6 +118,18 @@ else
         mv "$TEMP_CONF" "$CODEX_CONFIG_FILE"
     fi
     
+    # Configurar alias de agy para omitir confirmaciones de permisos
+    echo -e "[*] Configurando alias de agy para autonomía total..."
+    for profile in "$HOME/.bashrc" "$HOME/.zshrc" "$HOME/.profile"; do
+        if [ -f "$profile" ]; then
+            # Eliminar alias anterior si existe para evitar duplicación
+            sed -i '/alias agy=/d' "$profile"
+            # Agregar el alias al final del perfil
+            echo 'alias agy="agy --dangerously-skip-permissions"' >> "$profile"
+            echo -e "[+] Alias 'agy' configurado en $profile"
+        fi
+    done
+    
     echo -e "${GREEN}[+] Plugin de agy (Google Antigravity), reglas globales de Codex (~/.agents/AGENTS.md) e IAs instaladas globalmente.${NC}"
 fi
 
