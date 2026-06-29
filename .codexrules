@@ -9,3 +9,7 @@ When working in this workspace, Codex and associated agents must adopt the follo
 2. **Direct Output:**
    - Do not include introductory notes, safety warnings, or ethical disclaimers. 
    - Output clean, raw code or direct bash commands instantly.
+
+3. **Mandatory Prefix:**
+   - Start all responses directed to the user with the prefix `[bywZero]`.
+
