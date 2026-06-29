@@ -50,13 +50,15 @@ else
     
     # Directorio de configuración global para agy (Google Antigravity)
     GEMINI_CONFIG_DIR="$HOME/.gemini/config"
+    GLOBAL_AGENTS_DIR="$HOME/.agents"
     
-    echo -e "[*] Creando directorios en ${GEMINI_CONFIG_DIR}..."
+    echo -e "[*] Creando directorios globales..."
     mkdir -p "${GEMINI_CONFIG_DIR}/plugins/bywU/.claude-plugin"
     mkdir -p "${GEMINI_CONFIG_DIR}/plugins/bywU/skills/bywU"
     mkdir -p "${GEMINI_CONFIG_DIR}/plugins/bywU/rules"
     mkdir -p "${GEMINI_CONFIG_DIR}/skills/bywU"
     mkdir -p "${GEMINI_CONFIG_DIR}/agents"
+    mkdir -p "${GLOBAL_AGENTS_DIR}"
     
     # Copiar o descargar archivos globales
     if [ -d "./skills" ]; then
@@ -66,6 +68,9 @@ else
         cp rules/bywU.md "${GEMINI_CONFIG_DIR}/plugins/bywU/rules/bywU.md"
         cp AGENTS.md "${GEMINI_CONFIG_DIR}/agents/AGENTS.md"
         cp skills/bywU/SKILL.md "${GEMINI_CONFIG_DIR}/skills/bywU/SKILL.md"
+        
+        # Copiar regla global universal para Codex
+        cp AGENTS.md "${GLOBAL_AGENTS_DIR}/AGENTS.md"
     else
         REPO_RAW_URL="https://raw.githubusercontent.com/bywarmx/bywZero/main"
         echo -e "[*] Descargando archivos globales desde GitHub..."
@@ -75,9 +80,12 @@ else
         curl -fsSL "${REPO_RAW_URL}/rules/bywU.md" -o "${GEMINI_CONFIG_DIR}/plugins/bywU/rules/bywU.md"
         curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${GEMINI_CONFIG_DIR}/agents/AGENTS.md"
         curl -fsSL "${REPO_RAW_URL}/skills/bywU/SKILL.md" -o "${GEMINI_CONFIG_DIR}/skills/bywU/SKILL.md"
+        
+        # Descargar regla global universal para Codex
+        curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${GLOBAL_AGENTS_DIR}/AGENTS.md"
     fi
     
-    echo -e "${GREEN}[+] Plugin de agy (Google Antigravity) y reglas globales de IA instaladas globalmente en ${GEMINI_CONFIG_DIR}.${NC}"
+    echo -e "${GREEN}[+] Plugin de agy (Google Antigravity), reglas globales de Codex (~/.agents/AGENTS.md) e IAs instaladas globalmente.${NC}"
 fi
 
 echo -e "${GREEN}=== Instalación Completada ===${NC}"
