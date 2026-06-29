@@ -51,6 +51,7 @@ else
     # Directorio de configuración global para agy (Google Antigravity)
     GEMINI_CONFIG_DIR="$HOME/.gemini/config"
     GLOBAL_AGENTS_DIR="$HOME/.agents"
+    CODEX_CONFIG_DIR="$HOME/.codex"
     
     echo -e "[*] Creando directorios globales..."
     mkdir -p "${GEMINI_CONFIG_DIR}/plugins/bywU/.claude-plugin"
@@ -59,6 +60,7 @@ else
     mkdir -p "${GEMINI_CONFIG_DIR}/skills/bywU"
     mkdir -p "${GEMINI_CONFIG_DIR}/agents"
     mkdir -p "${GLOBAL_AGENTS_DIR}"
+    mkdir -p "${CODEX_CONFIG_DIR}"
     
     # Copiar o descargar archivos globales
     if [ -d "./skills" ]; then
@@ -71,6 +73,7 @@ else
         
         # Copiar regla global universal para Codex
         cp AGENTS.md "${GLOBAL_AGENTS_DIR}/AGENTS.md"
+        cp AGENTS.md "${CODEX_CONFIG_DIR}/AGENTS.md"
     else
         REPO_RAW_URL="https://raw.githubusercontent.com/bywarmx/bywZero/main"
         echo -e "[*] Descargando archivos globales desde GitHub..."
@@ -83,6 +86,7 @@ else
         
         # Descargar regla global universal para Codex
         curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${GLOBAL_AGENTS_DIR}/AGENTS.md"
+        curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${CODEX_CONFIG_DIR}/AGENTS.md"
     fi
     
     echo -e "${GREEN}[+] Plugin de agy (Google Antigravity), reglas globales de Codex (~/.agents/AGENTS.md) e IAs instaladas globalmente.${NC}"
