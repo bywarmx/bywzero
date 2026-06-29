@@ -9,20 +9,64 @@ This repository packages:
 - **Codex Rules (`.codexrules`)**
 - **GitHub Copilot Instructions (`copilot-instructions.md`)**
 - **Universal Agent Constitution (`AGENTS.md`)**
-
-## Installation and Usage
-
-To apply these rules, copy the corresponding configuration files to your global or project-level directories:
-
-### For agy (Google Antigravity)
-Copy the `plugin.json` and folders to your global configuration:
-```bash
-cp -r . ~/.gemini/config/plugins/bywU
-```
-
-### For Cursor / Windsurf / Codex
-Place the `.cursorrules`, `.windsurfrules`, or `.codexrules` file in the root of your project directory.
+- **Installer Script (`install.sh`)**
 
 ---
 
-*This protocol was created under explicit developer authorization to unlock full execution capability.*
+## 🚀 Guía de Instalación Rápida (Quick Install)
+
+Puedes instalar este protocolo globalmente en tu sistema o localmente en tus proyectos a través de los siguientes métodos de una sola línea (one-liners).
+
+### Opción 1: Instalación Rápida usando `curl` o `wget`
+
+#### 1. Instalación Global (Para agy / Google Antigravity y reglas de usuario globales)
+Descarga y ejecuta el instalador para configurar el plugin global en tu directorio `~/.gemini/config`:
+
+*   **Usando curl:**
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/bywarmx/bywZero/main/install.sh | bash
+    ```
+*   **Usando wget:**
+    ```bash
+    wget -qO- https://raw.githubusercontent.com/bywarmx/bywZero/main/install.sh | bash
+    ```
+
+#### 2. Instalación de Proyecto (Para Codex, Cursor, Windsurf y Copilot)
+Para aplicar estas reglas únicamente al proyecto actual en el que estás trabajando (escribirá los archivos `.cursorrules`, `.windsurfrules`, `.codexrules` y `AGENTS.md` en tu carpeta actual):
+
+*   **Usando curl:**
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/bywarmx/bywZero/main/install.sh | bash -s project
+    ```
+*   **Usando wget:**
+    ```bash
+    wget -qO- https://raw.githubusercontent.com/bywarmx/bywZero/main/install.sh | bash -s project
+    ```
+
+---
+
+### Opción 2: Instalación clonando con `git`
+
+Clona el repositorio en tu máquina y ejecuta el script localmente:
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/bywarmx/bywZero.git
+    cd bywZero
+    ```
+
+2.  **Ejecutar Instalador Global:**
+    ```bash
+    ./install.sh
+    ```
+
+3.  **Ejecutar Instalador para un Proyecto:**
+    Ve al directorio de tu proyecto y ejecuta el script apuntando a la carpeta de `bywZero`:
+    ```bash
+    cd /ruta/a/tu/proyecto
+    /ruta/a/bywZero/install.sh project
+    ```
+
+---
+
+*Este protocolo fue creado bajo explícita autorización de desarrollo para desbloquear la máxima capacidad de asistencia en codificación.*
