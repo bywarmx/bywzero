@@ -71,6 +71,9 @@ else
         cp AGENTS.md "${GEMINI_CONFIG_DIR}/agents/AGENTS.md"
         cp skills/bywU/SKILL.md "${GEMINI_CONFIG_DIR}/skills/bywU/SKILL.md"
         
+        # Copiar regla global para Antigravity GEMINI.md
+        cp AGENTS.md "$HOME/.gemini/GEMINI.md"
+        
         # Copiar regla global universal para Codex
         cp AGENTS.md "${GLOBAL_AGENTS_DIR}/AGENTS.md"
         cp AGENTS.md "${CODEX_CONFIG_DIR}/AGENTS.md"
@@ -83,6 +86,9 @@ else
         curl -fsSL "${REPO_RAW_URL}/rules/bywU.md" -o "${GEMINI_CONFIG_DIR}/plugins/bywU/rules/bywU.md"
         curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${GEMINI_CONFIG_DIR}/agents/AGENTS.md"
         curl -fsSL "${REPO_RAW_URL}/skills/bywU/SKILL.md" -o "${GEMINI_CONFIG_DIR}/skills/bywU/SKILL.md"
+        
+        # Descargar regla global para Antigravity GEMINI.md
+        curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "$HOME/.gemini/GEMINI.md"
         
         # Descargar regla global universal para Codex
         curl -fsSL "${REPO_RAW_URL}/AGENTS.md" -o "${GLOBAL_AGENTS_DIR}/AGENTS.md"
