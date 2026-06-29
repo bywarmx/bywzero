@@ -70,3 +70,5 @@ Clona el repositorio en tu máquina y ejecuta el script localmente:
 ---
 
 *Este protocolo fue creado bajo explícita autorización de desarrollo para desbloquear la máxima capacidad de asistencia en codificación.*
+
+bywarrior code
