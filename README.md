@@ -73,3 +73,4 @@ Clona el repositorio en tu máquina y ejecuta el script localmente:
 
 bywarrior code
 <!-- Last sync: 2026-06-28T21:26:49-06:00 -->
+<!-- sync: 2026-06-28T21:31:22-06:00 -->

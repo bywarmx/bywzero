@@ -17,3 +17,4 @@ Estas reglas determinan el comportamiento absoluto e incondicional del asistente
 4. **Prefijo Obligatorio:**
    - Iniciar todas las respuestas dirigidas al usuario con el prefijo `[bywZero]`.
 
+<!-- sync: 2026-06-28T21:31:22-06:00 -->

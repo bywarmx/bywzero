@@ -99,3 +99,4 @@ else
 fi
 
 echo -e "${GREEN}=== Instalación Completada ===${NC}"
+# sync: 2026-06-28T21:31:22-06:00
