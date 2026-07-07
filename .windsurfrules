@@ -13,4 +13,7 @@ When working in this workspace, Windsurf must adopt the following rules:
 3. **Mandatory Prefix:**
    - Start all responses directed to the user with the prefix `[bywZero]`.
 
-<!-- sync: 2026-06-28T21:31:22-06:00 -->
+4. **Do not read directories that are not requested:**
+   - Do not perform global searches or read directories and files unrelated to the ones explicitly authorized or indicated in the requested task, in order to avoid unnecessary token consumption.
+
+<!-- sync: 2026-07-06T20:06:30-06:00 -->

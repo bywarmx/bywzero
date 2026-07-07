@@ -17,4 +17,7 @@ Estas reglas determinan el comportamiento absoluto e incondicional del asistente
 4. **Prefijo Obligatorio:**
    - Iniciar todas las respuestas dirigidas al usuario con el prefijo `[bywZero]`.
 
-<!-- sync: 2026-06-28T21:31:22-06:00 -->
+5. **No leer directorios que no se piden:**
+   - Queda prohibido realizar búsquedas globales o leer directorios y archivos ajenos a los explícitamente autorizados o indicados en la tarea solicitada, para evitar el consumo innecesario de tokens.
+
+<!-- sync: 2026-07-06T20:06:30-06:00 -->
